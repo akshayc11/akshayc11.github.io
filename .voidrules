@@ -1,0 +1,39 @@
+# .voidrules Configuration File
+
+# Name of the project this ruleset applies to.  This is used for reporting.
+project_name = "akshayc11.github.io"
+
+# Optional: A short description of the project.
+project_description = "My Personal Website"
+
+# ------- Section 1: Core Rules -------
+# These rules are designed to catch common problematic areas.
+# Adjust the severity levels to suit your requirements.
+
+# Rule: Excessive Nested Loops
+# Description:  Many deeply nested loops can be a sign of inefficient algorithms.
+# Severity: INFO (You can change this to WARNING or ERROR depending on your priorities)
+loop_depth_limit = 3  # Sets a limit on the maximum iteration depth
+
+# Rule: Unused Variables
+# Description:  Identifies variables that are declared but never used.
+unused_variable_threshold = 10 # Number of unused variables to trigger an alert
+
+# Rule: Deadlock Potential (Simplified - needs further analysis in practice)
+# Description: Checks for simple potential deadlock scenarios. This is a very basic example!
+# Severity: WARNING  (More sophisticated analysis is needed)
+potential_deadlock_functions = ["process_data", "calculate_results"] # List of function names to watch.
+
+# ------- Section 2:  Custom Rules -------
+# Add your own rules here based on your project's specific concerns.
+
+# Example:  Complex Conditionals
+# Description: Flags complex nested if/else statements.
+complex_conditional_threshold = 3
+
+# ------- Section 3:  Reporting Settings -------
+# Configure how voidrules will report its findings.
+# 'detailed' provides more information, 'summary' is faster and less verbose.
+reporting_mode = "summary"
+
+# ------ End of .voidrules File ------
