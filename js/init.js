@@ -37,27 +37,22 @@
 /* Highlight the current section in the navigation bar
 ------------------------------------------------------*/
 
-	var sections = $("section");
-	var navigation_links = $("#nav-wrap a");
+	var navigation_links = $("#nav-wrap a.smoothscroll");
 
-	sections.waypoint({
-
-      handler: function(event, direction) {
-
-		   var active_section;
-
-			active_section = $(this);
-			if (direction === "up") active_section = active_section.prev();
-
-			var active_link = $('#nav-wrap a[href="#' + active_section.attr("id") + '"]');
-
-         navigation_links.parent().removeClass("current");
-			active_link.parent().addClass("current");
-
-		},
-		offset: '35%'
-
-	});
+	function updateCurrentSection() {
+		var probe = $(window).scrollTop() + $(window).height() * 0.35;
+		var current = null;
+		navigation_links.each(function() {
+			var target = $($(this).attr("href"));
+			if (target.length && target.offset().top <= probe) current = $(this);
+		});
+		if (current) {
+			navigation_links.parent().removeClass("current");
+			current.parent().addClass("current");
+		}
+	}
+	$(window).on('scroll resize', updateCurrentSection);
+	updateCurrentSection();
 
 
 /*----------------------------------------------------*/
@@ -96,6 +91,17 @@
       }
 
 	});
+
+/* Switch nav colors when it sits over a light section (resume) */
+   function updateNavTheme() {
+      var nav = $('#nav-wrap');
+      var navMid = $(window).scrollTop() + nav.outerHeight() / 2;
+      var sec = $('#resume');
+      var top = sec.offset().top;
+      nav.toggleClass('on-light', navMid >= top && navMid <= top + sec.outerHeight());
+   }
+   $(window).on('scroll resize', updateNavTheme);
+   updateNavTheme();
 
 
 /*----------------------------------------------------*/

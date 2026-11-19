@@ -181,6 +181,12 @@ ul#nav li a {
 ul#nav li a:active { background-color: transparent !important; }
 ul#nav li.current a { color: #F06000; }
 
+/* nav over light sections (resume): light bar, dark links */
+#nav-wrap.on-light { background-color: rgba(255, 255, 255, .95); box-shadow: 0 1px 3px rgba(0, 0, 0, .15); }
+#nav-wrap.on-light ul#nav li a { color: #313131; }
+#nav-wrap.on-light ul#nav li a:hover { color: #11ABB0; }
+#nav-wrap.on-light ul#nav li.current a { color: #F06000; }
+
 
 /* ------------------------------------------------------------------ */
 /* c. About Section
